@@ -13,11 +13,12 @@ class FootSoldier : public Soldier {
 public:
     int health_points;
     int damage_per_activity;
-    int playerNum;
+    //int playerNum;
 public:
-    FootSoldier(int playerNum) : health_points(100), damage_per_activity(10), playerNum(playerNum){};
 
-    void specialMove() // need to use override keyword
+    FootSoldier(int playerNum) : Soldier(playerNum), health_points(100), damage_per_activity(10){};
+
+    void specialMove() // need to check how use override keyword
     {
         std::cout << "perform foot-soldier special move";
     }
