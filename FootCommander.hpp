@@ -10,14 +10,14 @@
 #include <iostream>
 class FootCommander : public Soldier{
 public:
-    int health_points;
-    int damage_per_activity;
+   // int health_points;
+   // int damage_per_activity;
 public:
-    FootCommander(int playerNum) : Soldier(playerNum), health_points(150), damage_per_activity(20){};
+    FootCommander(int playerNum) : Soldier(playerNum, 20, 150){std::cout << "Foot Commander built for player:"<<playerNum<<std::endl;};
 
     void specialMove() // need to use override keyword
     {
-        std::cout << "perform FootCommander special move";
+        std::cout << "perform FootCommander special move" << std::endl;
     }
 
 };

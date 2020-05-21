@@ -21,7 +21,7 @@ namespace WarGame {
         std::vector<std::vector<Soldier*>> board;
     public:
         enum MoveDIR { Up, Down, Right, Left };
-
+        //pair<int,int> dim;
         Board(uint numRows, uint numCols) :
                 board(numRows, std::vector<Soldier*>(numCols, nullptr)) {}
 

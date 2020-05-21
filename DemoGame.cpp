@@ -33,7 +33,9 @@ namespace WarGame {
 			// In your game, you can put more soldier types, such as the sniper and the paramedic types.
 		}
 
-		uint DemoGame::play() {
+		uint DemoGame::play()
+		{
+		    std::cout << "Game Starting:" << std::endl;
 			board.move(1, {0,1}, Board::MoveDIR::Up);      // FootSoldier of player 1 moves forward and attacks.
 			if (!board.has_soldiers(2)) return 1;
 
@@ -49,6 +51,7 @@ namespace WarGame {
 			/// Write more moves here..
 
 			// If no player won, return "tie":
+			std::cout << "tie" << std::endl;
 			return 0;
 		}
 }
