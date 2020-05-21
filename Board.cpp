@@ -19,15 +19,13 @@ void WarGame::Board::move(uint player_number, std::pair<int, int> source, WarGam
                 case MoveDIR::Down:
                     if(y - 1 >= 0 && board[x][y-1] == nullptr){
                         this->board[x][y-1] = this->board[x][y]; // operator= overloaded
-                        //delete this->board[x][y];
-                        //this->board[x][y] = nullptr;
+                        this->board[x][y] = nullptr;
                         this->board[x][y-1]->specialMove(); // need to implement
                     }else throw std::invalid_argument ("Cant move the player Down to there");
                     break;
                 case MoveDIR::Up:
                     if(y + 1 < this->board.size() && board[x][y+1] == nullptr){
                         this->board[x][y+1]=this->board[x][y]; // copy the reference not good
-                        delete this->board[x][y];
                         this->board[x][y] = nullptr; // src and dest are both get null because have same address
                         this->board[x][y+1]->specialMove(); // need to implement
                     }else throw std::invalid_argument ("Cant move the player Up to there");
@@ -35,8 +33,7 @@ void WarGame::Board::move(uint player_number, std::pair<int, int> source, WarGam
                 case MoveDIR::Right:
                     if(x + 1 < this->board.size() && board[x+1][y] == nullptr){
                         this->board[x+1][y] = this->board[x][y];
-                        //delete this->board[x][y];
-                        //this->board[x][y] = nullptr;
+                        this->board[x][y] = nullptr;
                         this->board[x+1][y]->specialMove(); // need to implement
                     }else throw std::invalid_argument ("Cant move the player Right to there");
 
@@ -45,8 +42,7 @@ void WarGame::Board::move(uint player_number, std::pair<int, int> source, WarGam
                 case MoveDIR::Left:
                     if(x - 1 >= 0 && board[x-1][y] == nullptr){
                         this->board[x-1][y] = this->board[x][y];
-                       // delete this->board[x][y];
-                      //  this->board[x][y] = nullptr;
+                        this->board[x][y] = nullptr;
                         this->board[x-1][y]->specialMove(); // need to implement
                     }else throw std::invalid_argument ("Cant move the player Left to there");
 
