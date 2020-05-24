@@ -9,6 +9,7 @@
  */
 
 #include "Board.hpp"
+#pragma once
 
 namespace WarGame {
 	class DemoGame {

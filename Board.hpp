@@ -12,6 +12,7 @@
 #include <vector>
 #include <stdexcept>
 #include "Soldier.hpp"
+#pragma once
 
 
 namespace WarGame {
@@ -21,9 +22,9 @@ namespace WarGame {
         std::vector<std::vector<Soldier*>> board;
     public:
         enum MoveDIR { Up, Down, Right, Left };
-        //pair<int,int> dim;
+        std::pair<int,int> Dim;
         Board(uint numRows, uint numCols) :
-                board(numRows, std::vector<Soldier*>(numCols, nullptr)) {}
+                board(numRows, std::vector<Soldier*>(numCols, nullptr)) {this->Dim.first=numRows;this->Dim.second=numCols;}
 
         // operator for putting soldiers on the game-board during initialization.
         Soldier*& operator[](std::pair<int,int> location);
@@ -46,6 +47,10 @@ namespace WarGame {
 
         // returns true iff the board contains one or more soldiers of the given player.
         bool has_soldiers(uint player_number) const;
+
+        std::pair<int, int> Attacking(Board board, uint number, std::pair<int, int> pair);
+
+        int player2Attack(int player_number);
     };
 
 }

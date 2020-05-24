@@ -7,6 +7,11 @@
 
 
 #include <utility>
+#include <iostream>
+#include <vector>
+//#include "Board.hpp"
+#pragma once
+
 
 class Soldier{
 public: //should be protected instead?
@@ -19,11 +24,14 @@ public: //should be protected instead?
     public:
     Soldier() : health_points(0), damage_per_activity(0), playerNum(0){};
     Soldier(int playerNum, int damage_per_activity, int health_points) : playerNum(playerNum),damage_per_activity(damage_per_activity), health_points(health_points){};
-    //Soldier(int playerNum, std::pair<int,int> loc) : playerNum(playerNum), location(loc){};
-    void virtual specialMove() = 0; // this function will be overrided by type-soldiers and will be used polymorphic
-   // Soldier operator ==(const Soldier&);
+
+     //Soldier(int playerNum, std::pair<int,int> loc) : playerNum(playerNum), location(loc){};
+     virtual void specialMove(std::vector<std::vector<Soldier*>> &board,int PlayerToAttack, std::pair<int,int> placeOfSoldier) = 0;
+     //virtual void specialMove() = 0; // this function will be overrided by type-soldiers and will be used polymorphic
+   /* Soldier operator ==(const Soldier&);
    Soldier& operator=(const Soldier& other) // copy assignment
    {
+       //std::cout << "TESTTTT!!";
        if (this != &other) { // self-assignment check expected
 
            this->playerNum = other.playerNum;
@@ -32,6 +40,14 @@ public: //should be protected instead?
        }
        return *this;
    }
+    */
+    void decreaseHealth(int damage){
+        this->health_points -= damage;
+    }
+    void Heal(int life_points){
+        this->health_points += life_points;
+    }
+
 };
 /*
 Base* b = new Derived;
