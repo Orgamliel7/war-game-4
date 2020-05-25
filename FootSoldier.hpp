@@ -20,9 +20,10 @@ public:
     FootSoldier(int playerNum) : Soldier(playerNum, 10, 100) {
         std::cout << "Foot Soldier built for player:" << playerNum << std::endl;
     };
+    FootSoldier(int playerNum, int damage_per_act, int health_points) : Soldier(playerNum, damage_per_act, health_points){};
 
     void
-    basic_attack(std::vector<std::vector<Soldier *>> &board, int PlayerToAttack, std::pair<int, int> placeOfSoldier) {
+    basic_action(std::vector<std::vector<Soldier *>> &board, int PlayerToAttack, std::pair<int, int> placeOfSoldier) {
         std::pair<int, int> placeToAttack = {0, 0};
         int minDistance = INT16_MAX;
         for (int i = 0; i < board.size(); ++i) {
@@ -52,17 +53,17 @@ public:
                 delete board[x][y];
                 board[x][y] = nullptr;
             } else {
-                std::cout << "perform FootSoldier basic attack:" << std::endl;
+                std::cout << "perform FootSoldier basic full_action:" << std::endl;
                 std::cout << "Reducing health of enemy at: " << x << "," << y << " Health left: " << board[x][y]->health_points <<  std::endl;
             }
         }
     }
 
-    virtual void attack(std::vector<std::vector<Soldier *>> &board, int PlayerToAttack,
-                     std::pair<int, int> placeOfSoldier) // need to check how use override keyword
+    virtual void full_action(std::vector<std::vector<Soldier *>> &board, int PlayerToAttack,
+                             std::pair<int, int> placeOfSoldier) // need to check how use override keyword
     {
-        // apply basic attack for foot soldier
-        board[placeOfSoldier.first][placeOfSoldier.second]->basic_attack(board, PlayerToAttack, placeOfSoldier);
+        // apply basic full_action for foot soldier
+        board[placeOfSoldier.first][placeOfSoldier.second]->basic_action(board, PlayerToAttack, placeOfSoldier);
     }
 
 // Function to calculate distance

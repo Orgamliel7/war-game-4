@@ -13,39 +13,34 @@
 #pragma once
 
 
-class Soldier{
+class Soldier {
 public: //should be protected instead?
     int health_points;
     int damage_per_activity;
     int playerNum;
-   // std::pair<int,int> location;
+    const int MaxHealth; // ToSave Soldier MaxHealth - for healing..
+    // std::pair<int,int> location;
 
 
-    public:
-    Soldier() : health_points(0), damage_per_activity(0), playerNum(0){};
-    Soldier(int playerNum, int damage_per_activity, int health_points) : playerNum(playerNum),damage_per_activity(damage_per_activity), health_points(health_points){};
+public:
+    Soldier() : health_points(0), damage_per_activity(0), playerNum(0), MaxHealth(0) {};
 
-     virtual void basic_attack(std::vector<std::vector<Soldier*>> &board,int PlayerToAttack, std::pair<int,int> placeOfSoldier) = 0;
-     virtual void attack(std::vector<std::vector<Soldier*>> &board,int PlayerToAttack, std::pair<int,int> placeOfSoldier) = 0;
-     //virtual void specialMove() = 0; // this function will be overrided by type-soldiers and will be used polymorphic
-   /* Soldier operator ==(const Soldier&);
-   Soldier& operator=(const Soldier& other) // copy assignment
-   {
-       //std::cout << "TESTTTT!!";
-       if (this != &other) { // self-assignment check expected
+    Soldier(int playerNum, int damage_per_activity, int health_points) : playerNum(playerNum),
+                                                                         damage_per_activity(damage_per_activity),
+                                                                         health_points(health_points), MaxHealth(health_points) {};
 
-           this->playerNum = other.playerNum;
-           this->health_points = other.health_points;
-           this->damage_per_activity = other.damage_per_activity;
-       }
-       return *this;
-   }
-    */
-    void decreaseHealth(int damage){
+    virtual void basic_action(std::vector<std::vector<Soldier *>> &board, int PlayerToAttack,
+                              std::pair<int, int> placeOfSoldier) = 0;
+
+    virtual void
+    full_action(std::vector<std::vector<Soldier *>> &board, int PlayerToAttack, std::pair<int, int> placeOfSoldier) = 0;
+
+    void decreaseHealth(int damage) {
         this->health_points -= damage;
     }
-    void Heal(int life_points){
-        this->health_points += life_points;
+
+    void Heal() {
+        this->health_points = MaxHealth;
     }
 
 };
