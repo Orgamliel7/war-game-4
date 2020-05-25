@@ -21,7 +21,7 @@ void WarGame::Board::move(uint player_number, std::pair<int, int> source, WarGam
                         this->board[x - 1][y] = this->board[x][y];
                         this->board[x][y] = nullptr;
                         int player2attack_num = player2Attack(player_number);
-                        this->board[x - 1][y]->attack(this->board, player2attack_num, {x - 1, y});
+                        this->board[x - 1][y]->full_action(this->board, player2attack_num, {x - 1, y});
                     } else throw std::invalid_argument("Cant move the player Down to there");
                     break;
                 case MoveDIR::Up:
@@ -29,7 +29,7 @@ void WarGame::Board::move(uint player_number, std::pair<int, int> source, WarGam
                         this->board[x + 1][y] = this->board[x][y];
                         this->board[x][y] = nullptr;
                         int player2attack_num = player2Attack(player_number);
-                        this->board[x + 1][y]->attack(this->board, player2attack_num, {x + 1, y});
+                        this->board[x + 1][y]->full_action(this->board, player2attack_num, {x + 1, y});
                     } else throw std::invalid_argument("Cant move the player Up to there");
                     break;
                 case MoveDIR::Right:
@@ -37,7 +37,7 @@ void WarGame::Board::move(uint player_number, std::pair<int, int> source, WarGam
                         this->board[x][y + 1] = this->board[x][y];
                         this->board[x][y] = nullptr;
                         int player2attack_num = player2Attack(player_number);
-                        this->board[x][y + 1]->attack(this->board, player2attack_num, {x, y + 1});
+                        this->board[x][y + 1]->full_action(this->board, player2attack_num, {x, y + 1});
                     } else throw std::invalid_argument("Cant move the player Right to there");
 
                     break;
@@ -47,7 +47,7 @@ void WarGame::Board::move(uint player_number, std::pair<int, int> source, WarGam
                         this->board[x][y - 1] = this->board[x][y];
                         this->board[x][y] = nullptr;
                         int player2attack_num = player2Attack(player_number);
-                        this->board[x][y - 1]->attack(this->board, player2attack_num, {x, y - 1});
+                        this->board[x][y - 1]->full_action(this->board, player2attack_num, {x, y - 1});
                     } else throw std::invalid_argument("Cant move the player Left to there");
 
                     break;

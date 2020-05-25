@@ -43,15 +43,15 @@ namespace WarGame {
 			board.move(2, {7,1}, Board::MoveDIR::Down);    // FootSoldier of player 2 moves forward and attacks.
 			if (!board.has_soldiers(1)) return 2;
 
-			board.move(1, {0,3}, Board::MoveDIR::Up);      // FootCommander of player 1 moves forward, and all soldiers of player 1 attack.
+			board.move(1, {0,3}, Board::MoveDIR::Up);      // FootCommander of player 1 moves forward, and all soldiers of player 1 full_action.
 			if (!board.has_soldiers(2)) return 1;
 
-			board.move(2, {7,3}, Board::MoveDIR::Left);    // FootCommander of player 2 moves left, and all soldiers of player 2 attack.
+			board.move(2, {7,3}, Board::MoveDIR::Left);    // FootCommander of player 2 moves left, and all soldiers of player 2 full_action.
 			if (!board.has_soldiers(1)) return 2;
 
 			board.printBoard();
 			/// Write more moves here.. // w8 4 harel instructions
-            board.move(1, {1,3}, Board::MoveDIR::Down);      // FootCommander of player 1 moves forward, and all soldiers of player 1 attack.
+            board.move(1, {1,3}, Board::MoveDIR::Down);      // FootCommander of player 1 moves forward, and all soldiers of player 1 full_action.
             if (!board.has_soldiers(2)) return 1;
 
 			// If no player won, return "tie":
