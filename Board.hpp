@@ -51,6 +51,8 @@ namespace WarGame {
         std::pair<int, int> Attacking(Board board, uint number, std::pair<int, int> pair);
 
         int player2Attack(int player_number);
+
+        void printBoard();
     };
 
 }
