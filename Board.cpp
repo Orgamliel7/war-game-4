@@ -91,9 +91,10 @@ bool WarGame::Board::has_soldiers(uint player_number) const {
 
 // operator for putting soldiers on the game-board during initialization.
 Soldier *&WarGame::Board::operator[](std::pair<int, int> location) {
-    if (board[location.first][location.second] != nullptr) {
+    /*if (board[location.first][location.second] != nullptr) {
         throw std::invalid_argument("There is already player standing here!!");
     }
+     */
     if (location.first < board.size() && location.second < board.size()) {
         return this->board[location.first][location.second];
     } else {
