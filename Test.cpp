@@ -84,38 +84,31 @@ TEST_CASE ("Test of create soldiers") {
             CHECK_THROWS((board[{1, 1}] != nullptr));
 
     board.move(1, {0, 1}, Board::MoveDIR::Up);
-    //	CHECK(board[{1, 1}]->pointHealth > board[{3, 1}]->pointHealth);
             CHECK(board[{0, 1}] == nullptr);
             CHECK(board[{1, 1}] != nullptr);
     board.move(2, {3, 1}, Board::MoveDIR::Down);
-    // CHECK(board[{2, 1}]->pointHealth == board[{1, 1}]->pointHealth);
             CHECK(board[{3, 1}] == nullptr);
             CHECK(board[{2, 1}] != nullptr);
             CHECK(board.has_soldiers(2) == true);
 
     board.move(2, {5, 5}, Board::MoveDIR::Down);
-    // CHECK(board[{2, 1}]->pointHealth == board[{1, 1}]->pointHealth);
             CHECK(board[{5, 5}] == nullptr);
             CHECK(board[{4, 1}] != nullptr);
             CHECK(board.has_soldiers(2) == true);
 
     board.move(1, {0, 5}, Board::MoveDIR::Right);
-    // CHECK(board[{1, 2}]->pointHealth > board[{2, 1}]->pointHealth);
             CHECK(board[{0, 5}] == nullptr);
             CHECK(board[{1, 5}] != nullptr);
             CHECK(board.has_soldiers(1) == true);
 
     board.move(1, {0, 1}, Board::MoveDIR::Up);
-    //	CHECK(board[{1, 1}]->pointHealth > board[{3, 1}]->pointHealth);
             CHECK(board[{0, 1}] == nullptr);
             CHECK(board[{1, 1}] != nullptr);
     board.move(1, {1, 1}, Board::MoveDIR::Right);
-    // CHECK(board[{1, 2}]->pointHealth > board[{2, 1}]->pointHealth);
             CHECK(board[{1, 1}] == nullptr);
             CHECK(board[{1, 2}] != nullptr);
             CHECK(board.has_soldiers(1) == true);
     board.move(2, {3, 2}, Board::MoveDIR::Down);
-    // CHECK(board[{2, 2}]->pointHealth > board[{0, 3}]->pointHealth);
             CHECK(board[{3, 2}] == nullptr);
             CHECK(board[{2, 2}] != nullptr);
     board.move(1, {0, 2}, Board::MoveDIR::Up);
