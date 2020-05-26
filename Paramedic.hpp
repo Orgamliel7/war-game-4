@@ -10,7 +10,10 @@
 
 class Paramedic : public Soldier {
 public:
-    Paramedic(int playerNum) : Soldier(playerNum, 50, 100) {};
+    Paramedic(int playerNum) : Soldier(playerNum, 50, 100) {
+        std::cout << "Paramedic built for player:" << playerNum << std::endl;
+
+    };
 
     Paramedic(int playerNum, int damage_per_act, int health_points) : Soldier(playerNum, damage_per_act,
                                                                               health_points) {};
@@ -46,7 +49,30 @@ public:
             std::cout << "Soldier at: " << x << "," << y - 1 << " is Healed!" << " Health raised to:"
                       << board[x][y - 1]->health_points << " MaxHealth is:" << board[x][y - 1]->MaxHealth << std::endl;
         }
-
+        if (y - 1 >= 0 && x-1>=0 &&board[x-1][y - 1] != nullptr && board[x-1][y - 1]->playerNum != PlayerToAttack) // left heal
+        {
+            board[x-1][y - 1]->Heal();
+            std::cout << "Soldier at: " << x-1 << "," << y - 1 << " is Healed!" << " Health raised to:"
+                      << board[x][y - 1]->health_points << " MaxHealth is:" << board[x-1][y - 1]->MaxHealth << std::endl;
+        }
+        if (y + 1 >= 0 && x-1>=0&& board[x-1][y +1] != nullptr && board[x-1][y + 1]->playerNum != PlayerToAttack) // left heal
+        {
+            board[x-1][y + 1]->Heal();
+            std::cout << "Soldier at: " << x-1<< "," << y + 1 << " is Healed!" << " Health raised to:"
+                      << board[x-1][y + 1]->health_points << " MaxHealth is:" << board[x-1][y + 1]->MaxHealth << std::endl;
+        }
+        if (y + 1 >= 0 && x+1>=0&& board[x+1][y + 1] != nullptr && board[x+1][y + 1]->playerNum != PlayerToAttack) // left heal
+        {
+            board[x+1][y +1]->Heal();
+            std::cout << "Soldier at: " << x+1 << "," << y +1 << " is Healed!" << " Health raised to:"
+                      << board[x+1][y + 1]->health_points << " MaxHealth is:" << board[x+1][y + 1]->MaxHealth << std::endl;
+        }
+        if (y - 1 >= 0 && x+1>=0 && board[x+1][y - 1] != nullptr && board[x+1][y - 1]->playerNum != PlayerToAttack) // left heal
+        {
+            board[x+1][y - 1]->Heal();
+            std::cout << "Soldier at: " << x+1 << "," << y - 1 << " is Healed!" << " Health raised to:"
+                      << board[x+1][y - 1]->health_points << " MaxHealth is:" << board[x+1][y - 1]->MaxHealth << std::endl;
+        }
     }
 
     virtual
