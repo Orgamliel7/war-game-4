@@ -8,11 +8,11 @@
  * @since  2020-05
  */
 
+#pragma once
 #include <string>
 #include <vector>
 #include <stdexcept>
 #include "Soldier.hpp"
-#pragma once
 
 
 namespace WarGame {
@@ -20,9 +20,10 @@ namespace WarGame {
     class Board {
     private:
         std::vector<std::vector<Soldier*>> board;
+        std::pair<int,int> Dim;
     public:
         enum MoveDIR { Up, Down, Right, Left };
-        std::pair<int,int> Dim;
+
         Board(uint numRows, uint numCols) :
                 board(numRows, std::vector<Soldier*>(numCols, nullptr)) {this->Dim.first=numRows;this->Dim.second=numCols;}
 
@@ -48,11 +49,14 @@ namespace WarGame {
         // returns true iff the board contains one or more soldiers of the given player.
         bool has_soldiers(uint player_number) const;
 
-        std::pair<int, int> Attacking(Board board, uint number, std::pair<int, int> pair);
-
-        int player2Attack(int player_number);
+        int getRows();
+        int getCols();
 
         void printBoard();
+
+        bool moveAndAct(int new_x, int new_y, int old_x, int old_y);
+
+        bool inRange(int x, int y);
     };
 
 }
