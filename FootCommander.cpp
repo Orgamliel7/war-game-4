@@ -11,7 +11,7 @@ namespace WarGame {
             for (int j = 0; j < board.getCols(); ++j) {
                 if (board[{i,j}] != nullptr && board[{i,j}]->playerNum ==
                                               this->playerNum) { // if soldier belong to me
-                    if (board[{i,j}] = dynamic_cast<FootSoldier *>(board[{i,j}])) {
+                    if (dynamic_cast<FootSoldier *>(board[{i,j}])) {
                         std::cout << "FootSoldier at: " << i << "," << j
                                   << " performing action" << std::endl;
                         std::pair<int, int> loc = {i, j};
