@@ -10,7 +10,7 @@ namespace WarGame {
                 if (board[{i, j}] != nullptr &&
                     board[{i, j}]->playerNum == this->playerNum)
                 { // if soldier belong to me
-                    if (board[{i, j}] = dynamic_cast<Sniper *>(board[{i, j}]))
+                    if (dynamic_cast<Sniper *>(board[{i, j}]))
                     {
                         std::cout << "Sniper at: " << i << "," << j
                                   << " performing basic_action by commander order" << std::endl;
