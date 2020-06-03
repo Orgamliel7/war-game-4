@@ -10,7 +10,7 @@ namespace WarGame {
             for (int j = 0; j < board.getCols(); ++j) {
                 if (board[{i,j}] != nullptr && board[{i,j}]->playerNum ==
                                               this->playerNum) { // if there is a soldier here and if soldier is belong to me
-                    if (board[{i,j}] = dynamic_cast<Paramedic *>(board[{i,j}])) {
+                    if (dynamic_cast<Paramedic *>(board[{i,j}])) {
                         std::cout << "Paramedic at: " << i << "," << j
                                   << " performing basic heal-action by commander order" << std::endl;
                         std::pair<int, int> loc = {i, j};
