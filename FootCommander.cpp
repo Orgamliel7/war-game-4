@@ -3,8 +3,8 @@
 #include "Board.hpp"
 #include <iostream>
 
-namespace WarGame {
-    void FootCommander::full_action(Board &board,
+//namespace WarGame {
+    void WarGame::FootCommander::full_action(Board &board,
                                     std::pair<int, int> placeOfSoldier) {
         std::cout << "perform FootCommander full_action" << std::endl;
         for (int i = 0; i < board.getRows(); ++i) {
@@ -21,4 +21,4 @@ namespace WarGame {
             }
         }
     };
-}
+//}
