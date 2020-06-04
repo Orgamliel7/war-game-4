@@ -11,7 +11,7 @@
 #include "Board.hpp"
 #pragma once
 
-using namespace WarGame; //{
+namespace WarGame {
 	class DemoGame {
 	 private:
 		  const int numRows = 8;
@@ -30,4 +30,4 @@ using namespace WarGame; //{
 		uint play(); 
 		~DemoGame();
 	};
-//}
+}
