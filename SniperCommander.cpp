@@ -3,6 +3,7 @@
 #include "Board.hpp"
 
 namespace WarGame {
+    //כמו צלף, אבל כשהוא זז, לא רק הוא יורה אלא כל הצלפים של אותו שחקן יורים
     void SniperCommander::full_action(Board &board,
                      std::pair<int, int> placeOfSoldier) {
         for (int i = 0; i < board.getRows(); ++i) {
