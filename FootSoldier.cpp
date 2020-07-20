@@ -10,10 +10,9 @@ namespace WarGame {
         return sqrt(pow(x2 - x1, 2) +
                     pow(y2 - y1, 2) * 1.0);
     }
-
+// (חייל זה יכול ללכת משבצת אחת לכל כיוון. יורה על החייל של האויב שנמצא הכי קרוב אליו (אם יש כמה - הוא יורה על אחד מהם שרירותית
     void
     FootSoldier::basic_action(Board &board, std::pair<int, int> placeOfSoldier) {
-        std::pair<int, int> placeToAttack;
         float minDistance = std::numeric_limits<float>::max();
         for (int i = 0; i < board.getRows(); ++i) {
             for (int j = 0; j < board.getCols(); ++j) {
@@ -37,14 +36,14 @@ namespace WarGame {
             int &x = placeToAttack.first;
             int &y = placeToAttack.second;
             board[{x,y}]->decreaseHealth(this->getDamagePerActivity());
-            if (board[{x,y}]->isDead()) {
+            if (board[{x,y}]->isDead()) { // אם האויב נהרג 
                 std::cout << "EnemeySoldier at: " << x << "," << y << " is Died! (delete and null)" << std::endl;
-                delete board[{x,y}];
+                delete board[{x,y}]; // שחרור הזיכרון של אותו אויב
                 board[{x,y}] = nullptr;
-            } else {
+            } else { // אם שרד את הפגיעה
                 std::cout << "perform FootSoldier basic full_action:" << std::endl;
                 std::cout << "Reducing health of enemy at: " << x << "," << y << " Health left: "
-                          << board[{x,y}]->getHealthPoints() << std::endl;
+                          << board[{x,y}]->getHealthPoints() << std::endl; // הפחתת נק' הבריאות של האויב והדפסתם למסך 
             }
         }
 
