@@ -3,6 +3,7 @@
 #include "Board.hpp"
 
 namespace WarGame {
+    // צלף יכול ללכת משבצת אחת לכל כיוון. יורה על החייל החזק ביותר של האויב - זה שיש לו הכי הרבה נקודות בריאות (אם יש כמה כאלה - הוא בוחר אחד רנדומלית
     void Sniper::basic_action(Board &board,
                               std::pair<int, int> placeOfSoldier) {
         std::pair<int, int> placeToAttack;
