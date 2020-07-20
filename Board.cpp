@@ -7,14 +7,15 @@ void WarGame::Board::move(uint player_number, std::pair<int, int> source, WarGam
     std::cout << "Player No. " << player_number << " turn" << std::endl;
     int &x = source.first;
     int &y = source.second;
-    if (this->board[x][y] != nullptr) // there is a soldier to move
+    if (this->board[x][y] != nullptr) // אם יש חייל שאפשר להזיז
     {
-        if (this->board[x][y]->playerNum == player_number) // the soldier belongs to player
+        if (this->board[x][y]->playerNum == player_number) // אם החייל שייך ל-שחקן 
         {
             //move the soldier UP || DOWN || RIGHT || LEFT
-            switch (direction) {
+            switch (direction)
+            {
                 case MoveDIR::Down:
-                    if (!moveAndAct(x-1,y,x,y))
+                    if (!moveAndAct(x-1,y,x,y)) // אם לא הצלחנו להוריד 
                         throw std::invalid_argument("Cant move the player Down to there");
                     break;
                 case MoveDIR::Up:
@@ -85,7 +86,7 @@ WarGame::Soldier *&WarGame::Board::operator[](std::pair<int, int> location) {
 }
 
 // operator for reading which soldiers are on the game-board.
-// the const mean we don't change the object.
+// const - כדי שלא נוכל לשנות את האובייקט
 WarGame::Soldier *WarGame::Board::operator[](std::pair<int, int> location) const {
     if (location.first < Dim.first && location.second < Dim.second) {
         return this->board[location.first][location.second];
@@ -94,8 +95,8 @@ WarGame::Soldier *WarGame::Board::operator[](std::pair<int, int> location) const
     }
 }
 
-void WarGame::Board::printBoard() {
-    for (int i = 0; i < this->getRows(); ++i) {
+void WarGame::Board::printBoard() { // פונקציית הדפסה ללוח המשחק
+    for (int i = 0; i < this->getRows(); ++i) { // 
         std::cout << std::endl;
         for (int j = 0; j < this->getCols(); ++j) {
             if (board[i][j] != nullptr)
@@ -107,11 +108,11 @@ void WarGame::Board::printBoard() {
     std::cout << std::endl;
 }
 
-int WarGame::Board::getRows() {
+int WarGame::Board::getRows() { // פונקציה שמחזירה את מספר השורות
     return this->Dim.first;
 }
 
-int WarGame::Board::getCols() {
+int WarGame::Board::getCols() { // פונקציה שמחזירה את מספר העמודות
     return this->Dim.second;;
 }
 
