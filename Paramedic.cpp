@@ -3,6 +3,7 @@
 #include "Board.hpp"
 
 namespace WarGame {
+    // חובש - יכול ללכת משבצת אחת לכל כיוון. לא יורה, מרפא את כל החיילים של אותו שחקן שנמצאים במשבצת לידו -מחזיר את מספר נקודות-הבריאות שלהם למספר ההתחלת
     void Paramedic::basic_action(Board &board,
                                  std::pair<int, int> placeOfSoldier) {
         int &x = placeOfSoldier.first;
