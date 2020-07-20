@@ -4,9 +4,9 @@
 #include <math.h>
 
 namespace WarGame {
-    // Function to calculate distance
+    // פונקציה לחישוב המרחק
     float distance(int x1, int y1, int x2, int y2) {
-        // Calculating distance
+        // חישוב מרחק ע"פ הנוסחא
         return sqrt(pow(x2 - x1, 2) +
                     pow(y2 - y1, 2) * 1.0);
     }
@@ -23,7 +23,7 @@ namespace WarGame {
                         float Dis = distance(placeOfSoldier.first, placeOfSoldier.second, i, j);
                         if (Dis < minDistance)//calculate distance
                         {
-                            placeToAttack = {i, j};//save the place of the closest enemy's soldier
+                            placeToAttack = {i, j}; //שומר את המיקום של האויב הקרוב ביותר   
                             minDistance = Dis;
                         }
 
